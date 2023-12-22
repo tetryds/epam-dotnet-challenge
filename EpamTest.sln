@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolService", "SchoolService\SchoolService.csproj", "{8D1D98B0-5BB9-493F-A287-E5330691AFCA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolServiceTests", "SchoolServiceTests\SchoolServiceTests.csproj", "{A08108AC-CF2E-4BE2-BDCD-E7C6B0ED90E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2DB68346-E7E9-49A7-91E4-5B663AA5F72D}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D1D98B0-5BB9-493F-A287-E5330691AFCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D1D98B0-5BB9-493F-A287-E5330691AFCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D1D98B0-5BB9-493F-A287-E5330691AFCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D1D98B0-5BB9-493F-A287-E5330691AFCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A08108AC-CF2E-4BE2-BDCD-E7C6B0ED90E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A08108AC-CF2E-4BE2-BDCD-E7C6B0ED90E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A08108AC-CF2E-4BE2-BDCD-E7C6B0ED90E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A08108AC-CF2E-4BE2-BDCD-E7C6B0ED90E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1BE7B948-82A3-4B75-ABF5-8276354D7AFA}
+	EndGlobalSection
+EndGlobal
