@@ -37,6 +37,10 @@ The web UI allows the user to access the entire functionality defined by the acc
 
 ## Test Cases
 
+Success test results:
+
+![Test results](./test-results.png)
+
 ### Unit Tests
 
 Details:
