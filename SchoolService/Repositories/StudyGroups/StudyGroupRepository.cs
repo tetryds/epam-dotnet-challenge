@@ -31,6 +31,12 @@ public class StudyGroupRepository(SchoolDb db) : IStudyGroupRepository
         return await db.StudyGroups.ToListAsync(cancel);
     }
 
+    public async Task<IEnumerable<User>> GetStudyGroupUsersAsync(int studyGroupId, Cancel cancel)
+    {
+        var studyGroup = await db.StudyGroups.Include(s => s.Users).FirstAsync(s => s.Id == studyGroupId, cancellationToken: cancel);
+        return studyGroup.Users ?? throw new NotFoundException("studyGroup", studyGroupId);
+    }
+
     public async Task JoinStudyGroupAsync(int studyGroupId, int userId, Cancel cancel)
     {
         var user = await db.Users.FindAsync([userId], cancellationToken: cancel) ?? throw new NotFoundException("user", userId);
@@ -43,26 +49,14 @@ public class StudyGroupRepository(SchoolDb db) : IStudyGroupRepository
         await db.SaveChangesAsync(cancel);
     }
 
-    public async Task<IEnumerable<User>> GetStudyGroupUsersAsync(int studyGroupId, Cancel cancel)
-    {
-        var studyGroup = await db.StudyGroups.Include(s => s.Users).FirstAsync(s => s.Id == studyGroupId, cancellationToken: cancel);
-        return studyGroup.Users ?? throw new NotFoundException("studyGroup", studyGroupId);
-    }
-
     public async Task LeaveStudyGroupAsync(int studyGroupId, int userId, Cancel cancel)
     {
         var user = await db.Users.FindAsync([userId], cancellationToken: cancel) ?? throw new NotFoundException("user", userId);
 
-        var studyGroup = await db.StudyGroups.FindAsync([studyGroupId], cancellationToken: cancel) ?? throw new NotFoundException("studyGroup", studyGroupId);
+        var studyGroup = await db.StudyGroups.Include(s => s.Users).FirstAsync(s => s.Id == studyGroupId, cancellationToken: cancel) ?? throw new NotFoundException("studyGroup", studyGroupId);
 
         if (user.Id == studyGroup.OwnerId)
         {
-            foreach (var guest in studyGroup.Users)
-            {
-                studyGroup.Users.Remove(user);
-                user.StudyGroups.Remove(studyGroup);
-            }
-
             db.StudyGroups.Remove(studyGroup);
         }
         else
@@ -70,8 +64,6 @@ public class StudyGroupRepository(SchoolDb db) : IStudyGroupRepository
             studyGroup.Users.Remove(user);
             user.StudyGroups.Remove(studyGroup);
         }
-
-
 
         await db.SaveChangesAsync(cancel);
     }

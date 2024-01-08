@@ -90,14 +90,14 @@ public class EndToEndTests
 
         CollectionAssert.AreEquivalent(expectedGroup1UserNames, group1Users.Select(u => u.Name));
 
-        // User 3 leaves Group 1
-        await client.LeaveStudyGroup(initialGroups[0].Id, users[2].Id);
+        // User 2 leaves Group 1
+        await client.LeaveStudyGroup(initialGroups[0].Id, users[1].Id);
 
-        // Verify that group 1 users are User 1 (owner) and User 2
-        expectedGroup1UserNames = [users[0].Name, users[1].Name];
-        group1Users = (await client.GetStudyGroupUsers(initialGroups[0].Id)).ToList();
+        // Verify that group 1 users are User 1 (owner) and User 3
+        expectedGroup1UserNames = [users[0].Name, users[2].Name];
+        List<User> newGroup1Users= (await client.GetStudyGroupUsers(initialGroups[0].Id)).ToList();
 
-        CollectionAssert.AreEquivalent(expectedGroup1UserNames, group1Users.Select(u => u.Name));
+        CollectionAssert.AreEquivalent(expectedGroup1UserNames, newGroup1Users.Select(u => u.Name));
 
         // User 3 joins Group 2
         await client.JoinStudyGroup(initialGroups[1].Id, users[2].Id);

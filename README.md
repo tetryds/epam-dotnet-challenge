@@ -3,6 +3,11 @@
 ## Sql Challenge
 [Sql challenge solution with comments](./school-user-query.sql)
 
+## Execution Steps
+
+Launch solution using Visual Studio 2022.
+Tests can be executed through the `Test Explorer` window.
+
 ## Acceptance Criteria
 
 1. Users are able to create only one Study Group for a single Subject  
@@ -77,6 +82,21 @@ Test steps:
 * Verify that group is destroyed
 * Filter groups by subject
 * Verify that groups are correctly filtered by subject
+
+#### Exception scenarios
+
+In integration tests there are multiple exception scenarios to be tested.
+These exceptions were not implemented for brevity, or this challenge would take too long to complete.
+They include:
+
+* Verify that a study group cannot be created if the owner id does not exist
+* Verify that a study group is destroyed when the owner is deleted
+* Verify the correct errors when calling apis with ids for resources which do not exist
+* Verify that the requests throw errors when the database is not connected
+* Verify that a study group can never be empty, as it has to have at least the owner within the list of users
+* Verify that a user cannot join a study group twice
+
+And so on.
 
 ### End to end Tests
 

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 
 namespace SchoolService.Databases;
@@ -17,6 +18,7 @@ public class SchoolDb(DbContextOptions options) : DbContext(options)
         public string? Name { get; set; }
         public DateTime CreateDate { get; set; }
 
+        [CascadingParameter]
         public List<StudyGroup>? StudyGroups { get; } = [];
         [InverseProperty(nameof(StudyGroup.Owner))]
         public List<StudyGroup>? OwnedGroups { get; } = [];
